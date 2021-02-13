@@ -12,6 +12,17 @@
             v-model="contentType.name"
             autofocus
         />
+        <label class="strapi-content-type__label caption-s" for="display-by-strapi">
+            Display by
+            <div class="strapi-content-type__label-required">required</div>
+        </label>
+        <input
+            type="text"
+            name="display-by-strapi"
+            class="strapi-content-type__input caption-m ww-editor-input -large"
+            placeholder="Title"
+            v-model="contentType.displayBy"
+        />
         <label class="strapi-content-type__label caption-s" for="filter-strapi">
             Filter by formula
             <a
@@ -114,6 +125,7 @@ export default {
             contentType: {
                 id: wwLib.wwUtils.getUid(),
                 name: undefined,
+                displayBy: undefined,
                 filterByFormula: undefined,
                 limit: undefined,
                 start: undefined,
