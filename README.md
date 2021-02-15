@@ -1,4 +1,4 @@
-# PLUGIN-STRAI
+# PLUGIN-STRAPI
 
 This is a plugin for Weweb.
 
