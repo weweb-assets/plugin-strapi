@@ -11,7 +11,7 @@
                     <template v-if="getSource(contentType).lastSyncDate">
                         {{ getSource(contentType).lastSyncDate | dateFromNow }}
                     </template>
-                    <template v-else>Content type never synchronized</template>
+                    <template v-else>never synchronized</template>
                 </template>
             </div>
             <button
