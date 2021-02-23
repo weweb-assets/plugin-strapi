@@ -36,7 +36,7 @@ export default {
     async sidebarButton() {
         try {
             const { id, settings } = wwLib.wwPlugins.pluginStrapi;
-            const isSetup = !settings.privateData.url.length;
+            const isSetup = !!settings.privateData.url.length;
             const isFirstTime = !settings.privateData.contentTypes.length;
             await wwLib.wwPopups.open({
                 firstPage: isSetup ? 'STRAPI_POPUP' : 'STRAPI_CONFIGURATION_POPUP',
