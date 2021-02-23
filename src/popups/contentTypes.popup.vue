@@ -70,7 +70,7 @@ export default {
                 wwLib.wwLog.error(err);
             }
         },
-        deleteContentType(index) {
+        async deleteContentType(index) {
             const confirm = await wwLib.wwModals.open({
                 title: {
                     en: 'Delete data source?',
