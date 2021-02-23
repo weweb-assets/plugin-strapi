@@ -22,7 +22,7 @@ export default {
         /* wwEditor:start */
         const plugin = wwLib.wwPlugins.pluginStrapi;
         if (plugin.id) plugin.settings = (await wwLib.wwPlugin.getSettings(plugin.id)) || this.settings;
-        if (!plugin.settings.privateData.contentTypes) plugin.settings.privateData.tables = [];
+        if (!plugin.settings.privateData.contentTypes) plugin.settings.privateData.contentTypes = [];
         if (!plugin.settings.privateData.url) {
             plugin.settings.privateData.url = '';
             this.sidebarButton();
