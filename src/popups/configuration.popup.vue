@@ -39,7 +39,7 @@ export default {
     },
     computed: {
         isSetup() {
-            return !!this.settings.privateData.url && !!this.settings.privateData.url.length;
+            return this.settings.privateData.url && this.settings.privateData.url.length;
         },
     },
     methods: {
