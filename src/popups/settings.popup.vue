@@ -51,12 +51,7 @@ export default {
     data() {
         return {
             pluginId: undefined,
-            settings: {
-                privateData: {
-                    url: '',
-                    contentTypes: [],
-                },
-            },
+            settings: {},
         };
     },
     methods: {

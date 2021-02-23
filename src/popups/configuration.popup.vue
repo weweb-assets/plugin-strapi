@@ -28,12 +28,19 @@ export default {
     data() {
         return {
             settings: {
-                privateData: {
-                    url: '',
-                    contentTypes: [],
-                },
+                privateData: {},
             },
         };
+    },
+    watch: {
+        isSetup() {
+            this.options.setButtonState('SAVE', this.isSetup ? 'ok' : 'disabled');
+        },
+    },
+    computed: {
+        isSetup() {
+            return !!this.settings.privateData.url && !!this.settings.privateData.url.length;
+        },
     },
     methods: {
         async beforeNext() {
@@ -55,6 +62,7 @@ export default {
     created() {
         this.settings = this.options.data.settings || this.settings;
         this.options.result.settings = this.settings;
+        this.options.setButtonState('SAVE', this.isSetup ? 'ok' : 'disabled');
     },
 };
 </script>
