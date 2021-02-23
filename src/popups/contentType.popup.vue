@@ -134,8 +134,13 @@ export default {
         };
     },
     watch: {
-        'contentType.name'() {
-            this.options.setButtonState('SAVE', this.contentType.name ? 'ok' : 'disabled');
+        isSetup() {
+            this.options.setButtonState('SAVE', this.isSetup ? 'ok' : 'disabled');
+        },
+    },
+    computed: {
+        isSetup() {
+            return !!this.contentType.name && !!this.contentType.name.length;
         },
     },
     methods: {
@@ -156,7 +161,7 @@ export default {
     created() {
         this.contentType = this.options.data.contentType || this.contentType;
         this.options.result.contentType = this.contentType;
-        this.options.setButtonState('SAVE', this.contentType.contentTypeId ? 'ok' : 'disabled');
+        this.options.setButtonState('SAVE', this.isSetup ? 'ok' : 'disabled');
     },
 };
 </script>

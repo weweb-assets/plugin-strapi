@@ -50,10 +50,7 @@ export default {
             isFetching: false,
             contentTypesFetching: [],
             settings: {
-                privateData: {
-                    url: '',
-                    contentTypes: [],
-                },
+                privateData: {},
             },
         };
     },
@@ -108,7 +105,7 @@ export default {
         },
     },
     created() {
-        this.settings = _.cloneDeep(this.options.data.settings || this.settings);
+        this.settings = this.options.data.settings;
     },
 };
 </script>
