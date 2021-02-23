@@ -22,9 +22,9 @@ export default {
         /* wwEditor:start */
         const plugin = wwLib.wwPlugins.pluginStrapi;
         if (plugin.id) plugin.settings = (await wwLib.wwPlugin.getSettings(plugin.id)) || this.settings;
+        if (!plugin.settings.privateData.url) plugin.settings.privateData.url = '';
         if (!plugin.settings.privateData.contentTypes) plugin.settings.privateData.contentTypes = [];
-        if (!plugin.settings.privateData.url) {
-            plugin.settings.privateData.url = '';
+        if (!plugin.settings.privateData.url.length) {
             this.sidebarButton();
         }
         /* wwEditor:end */
@@ -36,9 +36,10 @@ export default {
     async sidebarButton() {
         try {
             const { id, settings } = wwLib.wwPlugins.pluginStrapi;
-            const isFirstTime = !settings.privateData.url || !settings.privateData.url.length;
+            const isSetup = !settings.privateData.url.length;
+            const isFirstTime = !settings.privateData.contentTypes.length;
             await wwLib.wwPopups.open({
-                firstPage: settings.privateData.url ? 'STRAPI_POPUP' : 'STRAPI_CONFIGURATION_POPUP',
+                firstPage: isSetup ? 'STRAPI_POPUP' : 'STRAPI_CONFIGURATION_POPUP',
                 data: {
                     isFirstTime,
                     pluginId: id,
