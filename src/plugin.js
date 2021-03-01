@@ -24,7 +24,7 @@ export default {
         if (plugin.id) plugin.settings = (await wwLib.wwPlugin.getSettings(plugin.id)) || this.settings;
         if (!plugin.settings.privateData.url) plugin.settings.privateData.url = '';
         if (!plugin.settings.privateData.contentTypes) plugin.settings.privateData.contentTypes = [];
-        if (!plugin.settings.privateData.url.length) {
+        if (plugin.isNew && !plugin.settings.privateData.url.length) {
             this.sidebarButton();
         }
         /* wwEditor:end */
