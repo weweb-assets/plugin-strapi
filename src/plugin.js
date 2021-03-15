@@ -31,6 +31,39 @@ export default {
     },
     /* wwEditor:start */
     /*=============================================m_ÔÔ_m=============================================\
+        SYNCHRONIZE
+    \================================================================================================*/
+    async sync(contentType) {
+        try {
+            await wwLib.wwPlugin.saveCmsDataSet(
+                this.settings.id,
+                contentType.id,
+                contentType.name,
+                contentType.displayBy,
+                'Strapi'
+            );
+
+            wwLib.wwNotification.open({
+                text: {
+                    en: `Content type "${contentType.name}" succesfully fetched`,
+                },
+                color: 'green',
+            });
+        } catch (err) {
+            wwLib.wwNotification.open({
+                text: {
+                    en: 'An error occured, please try again later.',
+                    fr: 'Une erreur est survenue. Veuillez réessayer plus tard.',
+                },
+                color: 'red',
+            });
+            wwLib.wwLog.error(err);
+        }
+    },
+    async syncAll() {
+        for (const contentType of this.settings.privateData.contentTypes) await this.sync(contentType);
+    },
+    /*=============================================m_ÔÔ_m=============================================\
         SIDEBAR POPUP
     \================================================================================================*/
     async sidebarButton() {
