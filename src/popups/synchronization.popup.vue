@@ -71,31 +71,7 @@ export default {
         },
         async sync(contentType) {
             this.contentTypeFetching(contentType, true);
-            try {
-                await wwLib.wwPlugin.saveCmsDataSet(
-                    this.settings.id,
-                    contentType.id,
-                    contentType.name,
-                    contentType.displayBy,
-                    'Strapi'
-                );
-
-                wwLib.wwNotification.open({
-                    text: {
-                        en: `Content type "${contentType.name}" succesfully fetched`,
-                    },
-                    color: 'green',
-                });
-            } catch (err) {
-                wwLib.wwNotification.open({
-                    text: {
-                        en: 'An error occured, please try again later.',
-                        fr: 'Une erreur est survenue. Veuillez réessayer plus tard.',
-                    },
-                    color: 'red',
-                });
-                wwLib.wwLog.error(err);
-            }
+            await wwLib.wwPlugins.pluginStrapi.sync(contentType);
             this.contentTypeFetching(contentType, false);
         },
         async syncAll() {
