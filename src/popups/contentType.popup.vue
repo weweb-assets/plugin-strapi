@@ -27,7 +27,7 @@
             Filter by formula
             <a
                 class="strapi-content-type__link"
-                href="//strapi.io/documentation/developer-docs/latest/content-api/parameters.html#filters"
+                href="//strapi.io/documentation/developer-docs/latest/developer-resources/content-api/content-api.html#filters"
                 target="_blank"
             >
                 Find it here
