@@ -32,11 +32,6 @@ export default {
         isValid() {
             return !!this.settings.privateData.url;
         },
-        integrationUrl() {
-            let url = this.settings.privateData.url || '';
-            if (url.endsWith('/')) url = url.slice(0, -1);
-            return `${url}/ghost/#/settings/integrations`;
-        },
     },
     methods: {
         setPrivateProp(key, value) {

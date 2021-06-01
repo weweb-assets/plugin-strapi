@@ -2,4 +2,4 @@
 
 This plugin will add:
 
-Ghost as a collection source
+Strapi as a collection source

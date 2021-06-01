@@ -13,8 +13,7 @@ export default {
     },
     computed: {
         isValid() {
-            const { contentApiKey, adminApiKey, url } = this.settings.privateData;
-            return !!contentApiKey && !!adminApiKey && !!url;
+            return !!this.settings.privateData.url;
         },
     },
     watch: {

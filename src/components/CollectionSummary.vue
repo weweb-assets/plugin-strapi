@@ -1,7 +1,6 @@
 <template>
     <div class="strapi-collection-summary">
-        <div class="strapi-collection-summary__elem caption-s">Method: {{ config.method || '-' }}</div>
-        <div class="strapi-collection-summary__elem caption-s">Ressource: {{ config.ressource || '-' }}</div>
+        <div class="strapi-collection-summary__elem caption-s">Content type: {{ config.name || '-' }}</div>
     </div>
 </template>
 
@@ -21,7 +20,7 @@ export default {
     },
     computed: {
         isSetup() {
-            return !!this.config.ressource && !!this.config.method;
+            return !!this.config.name;
         },
     },
 };

@@ -7,6 +7,7 @@
                 :value="contentType.name"
                 @input="setProp(name, $event)"
                 placeholder="blog-posts"
+                v-on:keyup.native.enter="$emit('next')"
                 large
             />
         </wwEditorFormRow>
@@ -24,8 +25,9 @@
                 type="text"
                 name="filter"
                 placeholder="firstName=John"
-                :input="contentType.filterByFormula"
+                :value="contentType.filterByFormula"
                 @input="setProp('filterByFormula', $event)"
+                v-on:keyup.native.enter="$emit('next')"
                 large
             />
         </wwEditorFormRow>
@@ -37,6 +39,7 @@
                     placeholder="100"
                     :value="contentType.limit"
                     @input="setProp('limit', $event)"
+                    v-on:keyup.native.enter="$emit('next')"
                     large
                 />
             </wwEditorFormRow>
@@ -47,17 +50,14 @@
                     placeholder="0"
                     :value="contentType.start"
                     @input="setProp('start', $event)"
+                    v-on:keyup.native.enter="$emit('next')"
                     large
                 />
             </wwEditorFormRow>
         </div>
         <wwEditorFormRow label="Sort">
             <template slot="append-label">
-                <button
-                    class="ww-editor-button -primary -small m-auto-left m-bottom"
-                    @click="addSort"
-                    :disabled="!isSetup"
-                >
+                <button class="ww-editor-button -primary -small m-auto-left m-bottom" @click="addSort">
                     Add a field to sort by
                 </button>
             </template>
@@ -73,7 +73,7 @@
                     :value="sort.field"
                     @input="setSortProp(index, { field: $event })"
                     placeholder="Field"
-                    :disabled="!isSetup"
+                    v-on:keyup.native.enter="$emit('next')"
                 />
                 <wwEditorSelect
                     :options="directionOptions"
