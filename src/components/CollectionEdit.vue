@@ -5,7 +5,7 @@
                 type="text"
                 name="param"
                 :value="contentType.name"
-                @input="setProp(name, $event)"
+                @input="setProp('name', $event)"
                 placeholder="blog-posts"
                 v-on:keyup.native.enter="$emit('next')"
                 large
