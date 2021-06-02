@@ -34,7 +34,7 @@
         <div class="strapi-collection-edit__row">
             <wwEditorFormRow label="Limit" class="-full">
                 <wwEditorFormInput
-                    type="text"
+                    type="number"
                     name="limit"
                     placeholder="100"
                     :value="contentType.limit"
@@ -45,7 +45,7 @@
             </wwEditorFormRow>
             <wwEditorFormRow label="Start" class="-full">
                 <wwEditorFormInput
-                    type="text"
+                    type="number"
                     name="start"
                     placeholder="0"
                     :value="contentType.start"
