@@ -1,5 +1,5 @@
-<iframe src="https://www.youtube-nocookie.com/embed/76CMCIW-wGk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<a href="https://strapi.io" target="_blank" class="ww-editor-link">Strapi</a> is the leading open-source headless CMS. It’s 100% JavaScript, fully customizable and developer-first.
 
-This plugin will add:
+This plugin will let you:
 
-Strapi as a collection source
+- Use Strapi content-types as a collection source in WeWeb
