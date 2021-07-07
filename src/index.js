@@ -1,4 +1,3 @@
-import Vue from 'vue';
 /* wwEditor:start */
 import './components/SettingsEdit.vue';
 import './components/SettingsSummary.vue';
@@ -7,12 +6,6 @@ import './components/CollectionSummary.vue';
 /* wwEditor:end */
 
 export default {
-    /*=============================================m_ÔÔ_m=============================================\
-        Plugin API
-    \================================================================================================*/
-    onLoad() {
-        Vue.prototype.$pluginStrapi = this;
-    },
     /*=============================================m_ÔÔ_m=============================================\
         Collection API
     \================================================================================================*/
