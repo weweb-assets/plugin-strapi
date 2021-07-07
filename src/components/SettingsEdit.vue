@@ -5,10 +5,9 @@
                 type="text"
                 name="url"
                 placeholder="https://my-strapi-url.com"
-                :value="settings.privateData.url"
-                @input="setPrivateProp('url', $event)"
-                v-on:keyup.native.enter="$emit('save')"
+                :model-value="settings.privateData.url"
                 large
+                @update:modelValue="setPrivateProp('url', $event)"
             />
         </wwEditorFormRow>
     </div>
@@ -17,25 +16,12 @@
 <script>
 export default {
     props: {
-        plugin: { type: Object, required: true },
         settings: { type: Object, required: true },
     },
-    watch: {
-        isValid: {
-            immediate: true,
-            handler(value) {
-                this.$emit('update-is-valid', value);
-            },
-        },
-    },
-    computed: {
-        isValid() {
-            return !!this.settings.privateData.url;
-        },
-    },
+    emits: ['update:settings'],
     methods: {
         setPrivateProp(key, value) {
-            this.$emit('update-settings', {
+            this.$emit('update:settings', {
                 ...this.settings,
                 privateData: { ...this.settings.privateData, [key]: value },
             });

@@ -4,15 +4,14 @@
             <wwEditorFormInput
                 type="text"
                 name="param"
-                :value="contentType.name"
-                @input="setProp('name', $event)"
+                :model-value="contentType.name"
                 placeholder="blog-posts"
-                v-on:keyup.native.enter="$emit('next')"
                 large
+                @update:modelValue="setProp('name', $event)"
             />
         </wwEditorFormRow>
         <wwEditorFormRow label="Filter">
-            <template slot="append-label">
+            <template #append-label>
                 <a
                     class="strapi-collection-edit__link"
                     href="//strapi.io/documentation/developer-docs/latest/developer-resources/content-api/content-api.html#filters"
@@ -25,10 +24,9 @@
                 type="text"
                 name="filter"
                 placeholder="firstName=John"
-                :value="contentType.filterByFormula"
-                @input="setProp('filterByFormula', $event)"
-                v-on:keyup.native.enter="$emit('next')"
+                :model-value="contentType.filterByFormula"
                 large
+                @update:modelValue="setProp('filterByFormula', $event)"
             />
         </wwEditorFormRow>
         <div class="strapi-collection-edit__row">
@@ -37,10 +35,9 @@
                     type="number"
                     name="limit"
                     placeholder="100"
-                    :value="contentType.limit"
-                    @input="setProp('limit', $event)"
-                    v-on:keyup.native.enter="$emit('next')"
+                    :model-value="contentType.limit"
                     large
+                    @update:modelValue="setProp('limit', $event)"
                 />
             </wwEditorFormRow>
             <wwEditorFormRow label="Start" class="-full">
@@ -48,39 +45,37 @@
                     type="number"
                     name="start"
                     placeholder="0"
-                    :value="contentType.start"
-                    @input="setProp('start', $event)"
-                    v-on:keyup.native.enter="$emit('next')"
+                    :model-value="contentType.start"
                     large
+                    @update:modelValue="setProp('start', $event)"
                 />
             </wwEditorFormRow>
         </div>
         <wwEditorFormRow label="Sort">
-            <template slot="append-label">
-                <button class="ww-editor-button -primary -small m-auto-left m-bottom" @click="addSort">
+            <template #append-label>
+                <button type="button" class="ww-editor-button -primary -small m-auto-left m-bottom" @click="addSort">
                     Add a field to sort by
                 </button>
             </template>
             <div
-                class="strapi-collection-edit__row -space-between m-bottom"
                 v-for="(sort, index) in contentType.sort"
                 :key="index"
+                class="strapi-collection-edit__row -space-between m-bottom"
             >
-                <div class="label-xs" v-if="!index">Sort by</div>
-                <div class="label-xs" v-else>then by</div>
+                <div v-if="!index" class="label-xs">Sort by</div>
+                <div v-else class="label-xs">then by</div>
                 <wwEditorFormInput
                     type="text"
-                    :value="sort.field"
-                    @input="setSortProp(index, { field: $event })"
+                    :model-value="sort.field"
                     placeholder="Field"
-                    v-on:keyup.native.enter="$emit('next')"
+                    @update:modelValue="setSortProp(index, { field: $event })"
                 />
                 <wwEditorSelect
                     :options="directionOptions"
-                    :value="sort.direction"
-                    @input="setSortProp(index, { direction: $event })"
+                    :model-value="sort.direction"
+                    @update:modelValue="setSortProp(index, { direction: $event })"
                 />
-                <button class="ww-editor-button -tertiary -small -icon -red" @click="deleteSort(index)">
+                <button type="button" class="ww-editor-button -tertiary -small -icon -red" @click="deleteSort(index)">
                     <wwEditorIcon class="ww-editor-button-icon" name="delete" small />
                 </button>
             </div>
@@ -91,9 +86,9 @@
 <script>
 export default {
     props: {
-        plugin: { type: Object, required: true },
         config: { type: Object, required: true },
     },
+    emits: ['update:config'],
     data() {
         return {
             directionOptions: [
@@ -102,18 +97,7 @@ export default {
             ],
         };
     },
-    watch: {
-        isSetup: {
-            immediate: true,
-            handler(value) {
-                this.$emit('update-is-valid', value);
-            },
-        },
-    },
     computed: {
-        isSetup() {
-            return !!this.contentType.name;
-        },
         contentType() {
             return {
                 name: undefined,
@@ -142,7 +126,7 @@ export default {
             this.setProp('order', sort);
         },
         setProp(key, value) {
-            this.$emit('update-config', { ...this.contentType, [key]: value });
+            this.$emit('update:config', { ...this.contentType, [key]: value });
         },
     },
 };

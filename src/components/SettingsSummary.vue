@@ -1,5 +1,5 @@
 <template>
-    <div class="strapi-settings-summary" v-if="isValid">
+    <div class="strapi-settings-summary">
         <wwEditorIcon name="link" class="strapi-settings-summary__icon"></wwEditorIcon>
         <span class="caption-m">{{ settings.privateData.url }}</span>
     </div>
@@ -8,21 +8,7 @@
 <script>
 export default {
     props: {
-        plugin: { type: Object, required: true },
         settings: { type: Object, required: true },
-    },
-    computed: {
-        isValid() {
-            return !!this.settings.privateData.url;
-        },
-    },
-    watch: {
-        isValid: {
-            immediate: true,
-            handler(value) {
-                this.$emit('update-is-valid', value);
-            },
-        },
     },
 };
 </script>
