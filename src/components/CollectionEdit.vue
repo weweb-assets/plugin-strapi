@@ -113,17 +113,17 @@ export default {
         addSort() {
             const sort = _.cloneDeep(this.contentType.sort || []);
             sort.push({ field: '', direction: 'asc' });
-            this.setProp('order', sort);
+            this.setProp('sort', sort);
         },
         setSortProp(index, value) {
             const sort = _.cloneDeep(this.contentType.sort);
             sort.splice(index, 1, { ...sort[index], ...value });
-            this.setProp('order', sort);
+            this.setProp('sort', sort);
         },
         deleteSort(index) {
             const sort = _.cloneDeep(this.contentType.sort);
             sort.splice(index, 1);
-            this.setProp('order', sort);
+            this.setProp('sort', sort);
         },
         setProp(key, value) {
             this.$emit('update:config', { ...this.contentType, [key]: value });
