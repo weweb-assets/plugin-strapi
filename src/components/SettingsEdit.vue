@@ -7,7 +7,7 @@
                 placeholder="https://my-strapi-url.com"
                 :model-value="settings.privateData.url"
                 large
-                @update:modelValue="setPrivateProp('url', $event)"
+                @update:modelValue="saveUrl"
             />
         </wwEditorFormRow>
     </div>
@@ -20,6 +20,9 @@ export default {
     },
     emits: ['update:settings'],
     methods: {
+        saveUrl(value) {
+            this.setPrivateProp('url', value.trim().replace(/\/+$/g, ''));
+        },
         setPrivateProp(key, value) {
             this.$emit('update:settings', {
                 ...this.settings,
