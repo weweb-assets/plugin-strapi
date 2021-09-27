@@ -1,7 +1,7 @@
 <template>
     <div class="strapi-collection-edit">
         <wwEditorFormRow label="Content type" required>
-            <wwEditorFormInput
+            <wwEditorInputText
                 type="text"
                 name="param"
                 :model-value="contentType.name"
@@ -20,7 +20,7 @@
                     Find it here
                 </a>
             </template>
-            <wwEditorFormInput
+            <wwEditorInputText
                 type="text"
                 name="filter"
                 placeholder="firstName=John"
@@ -31,7 +31,7 @@
         </wwEditorFormRow>
         <div class="strapi-collection-edit__row">
             <wwEditorFormRow label="Limit" class="-full">
-                <wwEditorFormInput
+                <wwEditorInputText
                     type="number"
                     name="limit"
                     placeholder="100"
@@ -41,7 +41,7 @@
                 />
             </wwEditorFormRow>
             <wwEditorFormRow label="Start" class="-full">
-                <wwEditorFormInput
+                <wwEditorInputText
                     type="number"
                     name="start"
                     placeholder="0"
@@ -64,13 +64,13 @@
             >
                 <div v-if="!index" class="label-xs">Sort by</div>
                 <div v-else class="label-xs">then by</div>
-                <wwEditorFormInput
+                <wwEditorInputText
                     type="text"
                     :model-value="sort.field"
                     placeholder="Field"
                     @update:modelValue="setSortProp(index, { field: $event })"
                 />
-                <wwEditorSelect
+                <wwEditorInputTextSelect
                     :options="directionOptions"
                     :model-value="sort.direction"
                     @update:modelValue="setSortProp(index, { direction: $event })"

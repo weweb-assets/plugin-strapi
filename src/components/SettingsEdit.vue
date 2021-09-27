@@ -1,7 +1,7 @@
 <template>
     <div class="strapi-settings-edit">
         <wwEditorFormRow required label="URL">
-            <wwEditorFormInput
+            <wwEditorInputText
                 type="text"
                 name="url"
                 placeholder="https://my-strapi-url.com"
