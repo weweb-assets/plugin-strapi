@@ -1,0 +1,95 @@
+{
+    "schemaVersion": 1,
+    "features": {
+        "datasource": true
+    },
+    "settings": {
+        "fields": [
+            {
+                "key": "url",
+                "type": "secret",
+                "label": "URL",
+                "storage": "privateData",
+                "normalize": "trimUrl",
+                "required": true,
+                "placeholder": "https://my-strapi-url.com"
+            }
+        ]
+    },
+    "collection": {
+        "fields": [
+            {
+                "key": "name",
+                "type": "text",
+                "label": "Content type",
+                "required": true,
+                "placeholder": "blog-posts"
+            },
+            {
+                "key": "filterByFormula",
+                "type": "text",
+                "label": "Filter",
+                "placeholder": "firstName=John",
+                "help": {
+                    "text": "Strapi filter syntax.",
+                    "link": {
+                        "label": "Find it here",
+                        "url": "https://strapi.io/documentation/developer-docs/latest/developer-resources/content-api/content-api.html#filters"
+                    }
+                }
+            },
+            {
+                "key": "limit",
+                "type": "number",
+                "label": "Limit",
+                "placeholder": "100"
+            },
+            {
+                "key": "start",
+                "type": "number",
+                "label": "Start",
+                "placeholder": "0"
+            },
+            {
+                "key": "sort",
+                "type": "list",
+                "label": "Sort",
+                "item": {
+                    "type": "record",
+                    "fields": [
+                        {
+                            "key": "field",
+                            "label": "Field",
+                            "type": "text",
+                            "placeholder": "Field",
+                            "initial": ""
+                        },
+                        {
+                            "key": "direction",
+                            "label": "Direction",
+                            "type": "choice",
+                            "initial": "asc",
+                            "choices": [
+                                {
+                                    "label": "Asc",
+                                    "value": "asc"
+                                },
+                                {
+                                    "label": "Desc",
+                                    "value": "desc"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "summary": [
+            {
+                "field": "name",
+                "label": "Content type:",
+                "empty": "-"
+            }
+        ]
+    }
+}
